@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App -->
+    <string name="app_name">HaloWhip</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Main -->
+    <string name="st_peter_description">Just a St. Peter</string>
+    <string name="halo_description">Just an Halo</string>
+    <string name="message">Forgive my sins Saint Peter</string>
+
+    <!-- Settings -->
+    <string name="save_settings">Save</string>
+    <string name="cancel_settings">Cancel</string>
+    <string name="setting_username">Username</string>
+    <string name="setting_password">Password</string>
+    <string name="setting_host">Host</string>
+    <string name="setting_door">Door</string>
+
+</resources>
