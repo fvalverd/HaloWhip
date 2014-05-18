@@ -111,7 +111,6 @@ public class MainActivity extends Activity implements SensorEventListener, Reque
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		// TODO: custom sensibility
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 			float[] mGravity = event.values.clone();
 			float x = mGravity[0], y = mGravity[1], z = mGravity[2];
@@ -119,15 +118,7 @@ public class MainActivity extends Activity implements SensorEventListener, Reque
 			currentAcceleration = Math.sqrt(x*x + y*y + z*z);
 			acceleration = acceleration * 0.1f + (currentAcceleration - lastAcceleration);
 			if (acceleration > minAcceleration) {
-				soundService.playSound(R.raw.halo_whip);
-				if (!working) {
-					synchronized (this) {
-		    			if (!working) {
-		    				working = true;
-		    				sendRequest(null);
-		    			}
-					}
-				}
+				sendRequest(null);
 			}
 		}
 	}
@@ -148,7 +139,15 @@ public class MainActivity extends Activity implements SensorEventListener, Reque
 	}
 
 	public void sendRequest(View view) {
-		new RequestTask(this, settings).execute();
+		soundService.playSound(R.raw.halo_whip);
+		if (!working) {
+			synchronized (this) {
+				if (!working) {
+					working = true;
+					new RequestTask(this, settings).execute();
+				}
+			}
+		}
 	}
 	
 }

@@ -29,19 +29,15 @@ public class RequestTask extends AsyncTask<Void, Void, HttpResponse> {
 	}
 
 	protected HttpResponse doInBackground(Void... voids) {
-		String url = (String) settings.get("host");
-		String username = (String) settings.get("username");
-		String password = (String) settings.get("password");
-		String door = (String) settings.get("door");
 		HttpParams httpParameters = new BasicHttpParams();
 		HttpConnectionParams.setConnectionTimeout(httpParameters, 3000);
 		HttpConnectionParams.setSoTimeout(httpParameters, 8000);
 		HttpClient client = new DefaultHttpClient(httpParameters);
-		HttpPost post = new HttpPost(url);
+		HttpPost post = new HttpPost((String) settings.get("host"));
 		List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-		pairs.add(new BasicNameValuePair("username", username));
-		pairs.add(new BasicNameValuePair("password", password));
-		pairs.add(new BasicNameValuePair("door_id", door));
+		pairs.add(new BasicNameValuePair("username", (String) settings.get("username")));
+		pairs.add(new BasicNameValuePair("password", (String) settings.get("password")));
+		pairs.add(new BasicNameValuePair("door_id", (String) settings.get("door")));
 		HttpResponse response = null;
 		try {
 			post.setEntity(new UrlEncodedFormEntity(pairs));
