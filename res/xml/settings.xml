@@ -2,33 +2,33 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 	<PreferenceCategory android:title="Whip" >
 		<SeekBarPreference
-			android:defaultValue="20"
-			android:key="whip_sensibility"
-			android:max="100"
-			android:progress="50"
-			android:title="Sensibility" />
+			android:defaultValue="@string/sensitivity_default"
+			android:key="sensitivity"
+			android:max="@string/sensitivity_max"
+			android:progress="@string/sensitivity_max"
+			android:title="@string/sensitivity_title" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="Connection" >
         <EditTextPreference
             android:defaultValue="http://192.168.99.20/api/doors/open"
             android:key="host"
             android:singleLine="true"
-            android:title="@string/setting_host" />
+            android:title="@string/host_title" />
         <EditTextPreference
             android:defaultValue=""
             android:key="username"
             android:singleLine="true"
-            android:title="@string/setting_username" />
+            android:title="@string/username_title" />
         <EditTextPreference
             android:defaultValue=""
             android:key="password"
             android:singleLine="true"
             android:inputType="textPassword"
-            android:title="@string/setting_password" />
+            android:title="@string/password_title" />
         <EditTextPreference
             android:defaultValue="1"
             android:key="door"
             android:singleLine="true"
-            android:title="@string/setting_door" />
+            android:title="@string/door_title" />
 	</PreferenceCategory>
 </PreferenceScreen>

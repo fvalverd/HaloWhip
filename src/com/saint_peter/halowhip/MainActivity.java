@@ -67,6 +67,7 @@ public class MainActivity extends Activity implements SensorEventListener, Reque
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.action_bar, menu);
 		return true;
@@ -83,7 +84,9 @@ public class MainActivity extends Activity implements SensorEventListener, Reque
 	public void onResume() {
 		super.onResume();
 		settings = PreferenceManager.getDefaultSharedPreferences(this).getAll();
-		minAcceleration = Integer.valueOf(settings.get("whip_sensibility").toString());
+		int sensitivity_max= Integer.valueOf(getString(R.string.sensitivity_max));
+		int custom_sensitivity = Integer.valueOf(settings.get("sensitivity").toString());
+		minAcceleration = sensitivity_max - custom_sensitivity;
 		sensorManager.registerListener(
 			this,
 			sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
